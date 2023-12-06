@@ -6,7 +6,7 @@
 #    By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 17:09:30 by lquehec           #+#    #+#              #
-#    Updated: 2023/12/05 22:13:48 by lquehec          ###   ########.fr        #
+#    Updated: 2023/12/06 20:34:34 by lquehec          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,9 +31,24 @@ HEADER_DIR	= ./includes/
 
 SRCS 		= $(addprefix $(SRCS_DIR),\
 				main.c \
-				lst/ft_clstadd_back.c \
-				lst/ft_clstlast.c \
-				lst/ft_clstnew.c )
+				init.c \
+				exit.c \
+				error.c \
+				parsing.c \
+				is.c \
+				print.c \
+				sorting.c \
+				moves/ft_swap.c \
+				moves/ft_rotate.c \
+				moves/ft_rrotate.c \
+				moves/ft_push.c \
+				clst/ft_clstadd_back.c \
+				clst/ft_clstadd_front.c \
+				clst/ft_clstlast.c \
+				clst/ft_clstnew.c \
+				clst/ft_clstdelfirst.c \
+				clst/ft_clstfree.c \
+				clst/ft_clstfree_node.c )
 
 OBJS = $(SRCS:.c=.o)
 

@@ -1,0 +1,39 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    ft_push.bk                                         :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/12/06 17:01:21 by lquehec           #+#    #+#              #
+#    Updated: 2023/12/06 17:36:13 by lquehec          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+#include "push_swap.h"
+
+void	ft_push(t_clist **clst_src, t_clist **clst_dest)
+{
+	int	number;
+
+	if (!*clst_src)
+		return ;
+	number = (*clst_src)->number;
+	ft_clstdelfirst(clst_src);
+	if (!*clst_dest)
+		*clst_dest = ft_clstnew(number);
+	else
+		ft_clstadd_front(clst_dest, ft_clstnew(number));
+}
+
+void	pa(t_stack *stack_a, t_stack *stack_b)
+{
+	ft_push(&stack_b->stack, &stack_a->stack);
+	ft_putstr_fd("pa\n", 1);
+}
+
+void	pb(t_stack *stack_a, t_stack *stack_b)
+{
+	ft_push(&stack_a->stack, &stack_b->stack);
+	ft_putstr_fd("pb\n", 1);
+}

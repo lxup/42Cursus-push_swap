@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 20:01:00 by lquehec           #+#    #+#             */
-/*   Updated: 2023/11/07 20:01:01 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/06 20:07:30 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_atoi(const char *str)
 		|| str[i] == '\r' || str[i] == '\t' || str[i] == '\v')
 		i++;
 	sign = 1;
-	if (str[i] == '-' || str[i] == '+')
+	while (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
 			sign *= -1;

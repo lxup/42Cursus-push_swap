@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_clstnew.c                                       :+:      :+:    :+:   */
+/*   ft_clstlast.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 21:23:10 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/05 22:17:21 by lquehec          ###   ########.fr       */
+/*   Created: 2023/12/05 20:53:28 by lquehec           #+#    #+#             */
+/*   Updated: 2023/12/06 18:42:20 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_clist	*ft_clstnew(int number, int index)
+t_clist	*ft_clstlast(t_clist *lst)
 {
-	t_clist	*new_lst;
-
-	new_lst = (t_clist *)malloc(sizeof(t_clist));
-	if (!new_lst)
-		return (NULL);
-	new_lst->number = number;
-	new_lst->index = index;
-	new_lst->next = NULL;
-	new_lst->prev = NULL;
-	return (new_lst);
+	if (!lst)
+		return (lst);
+	return (lst->prev);
 }
