@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 20:32:00 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/06 21:25:03 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/06 21:26:44 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	three_sort(t_stack *stack)
 
 void	small_sort(t_stack *stack_a, t_stack *stack_b)
 {
+	// https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a
 	(void)stack_a, (void)stack_b;
 	pb(stack_a, stack_b);
 	if (stack_a->size > 4)
