@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:21:21 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/07 18:57:02 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/07 20:46:00 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,13 @@ void	ft_error(int error, char *param);
 
 // IS
 int		is_int(int num);
+int		is_whitespace(char c);
 int		is_in_range(int a, int b, int c);
 int		is_sorted(t_clist **head);
+
+// FREE
+void	ft_free_matrix_with_indice(char **matrix, int i);
+void	ft_free_matrix(char **matrix);
 
 /* ========== MOVES ==========*/
 // SWAP

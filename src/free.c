@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 18:18:26 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/07 20:52:31 by lquehec          ###   ########.fr       */
+/*   Created: 2023/12/07 20:44:52 by lquehec           #+#    #+#             */
+/*   Updated: 2023/12/07 20:45:41 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_error(int error, char *param)
+void	ft_free_matrix_with_indice(char **matrix, int i)
 {
-	ft_putstr_fd("Error:\n", 2);
-	if (error == MEMORY_ERR)
-		ft_putstr_fd("DAMN, no memory left on device", 2);
-	if (error == ARGS_ERR)
-		ft_putstr_fd("Arguments-> ", 2);
-	if (param)
-		ft_putstr_fd(param, 2);
-	ft_putstr_fd("\n", 2);
+	while (i > 0)
+	{
+		free(matrix[i]);
+		i--;
+	}
+	free(matrix);
+}
+
+void	ft_free_matrix(char **matrix)
+{
+	int	i;
+
+	i = 0;
+	while (matrix && matrix[i])
+	{
+		free(matrix[i]);
+		i++;
+	}
+	free(matrix);
 }

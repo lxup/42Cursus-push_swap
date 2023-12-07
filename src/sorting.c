@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 20:32:00 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/07 19:15:27 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/07 20:03:45 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,28 @@
 void	complex_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	(void)stack_a, (void)stack_b;
+	int	bit_pos;
+	int count;
+
+	bit_pos = 1;
+	while (!is_sorted(&stack_a->stack))
+	{
+		count = 0;
+		while (stack_a->stack && count++ < stack_a->size)
+		{
+			if ((stack_a->stack && bit_pos) == 0)
+			{
+				pb(stack_a, stack_b);
+			}
+			else
+				ra(stack_a);
+		}
+		while (stack_b->stack)
+		{
+			pa(stack_a, stack_b);
+		}
+		bit_pos *= 2;
+	}
 }
 
 void	ft_find_smallest(t_clist **head, t_number *smallest)
@@ -108,8 +130,6 @@ void	small_sort(t_stack *stack_a, t_stack *stack_b)
 
 void	sorting(t_stack *stack_a, t_stack *stack_b)
 {
-	if (is_sorted(&stack_a->stack))
-		return ;
 	if (stack_a->size == 2)
 		sa(stack_a);
 	else if (stack_a->size == 3)
