@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 19:32:55 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/06 20:19:59 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/07 17:05:48 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_init_clst(t_stack *stack, int ac, char **av)
 	}
 }
 
-void	ft_init_stacks(t_stack *stack)
+void	ft_init_stack(t_stack *stack)
 {
 	stack->stack = NULL;
 	stack->size = 0;

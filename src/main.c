@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 21:04:06 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/06 20:50:02 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/07 19:10:23 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	main(int ac, char **av)
 
 	if (ac < 2)
 		return (1);
-	ft_init_stacks(&stack_a);
-	ft_init_stacks(&stack_b);
+	ft_init_stack(&stack_a);
+	ft_init_stack(&stack_b);
 	parsing(&stack_a, ac, av);
 	// push_swap(&stack_a, &stack_b);
 	// ft_print_clst(&stack_a.stack, "a");
@@ -39,6 +39,6 @@ int	main(int ac, char **av)
 	// ft_print_clst(&stack_a.stack, "a");
 	// ft_print_clst(&stack_b.stack, "b");
 	sorting(&stack_a, &stack_b);
-	ft_print_stacks(&stack_a.stack, &stack_b. stack);
+	ft_print_stacks(&stack_a, &stack_b);
 	return (*(int *)ft_exit(&stack_a, &stack_b, 0, NULL));
 }

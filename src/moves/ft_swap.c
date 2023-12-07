@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:24:41 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/06 18:42:48 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/07 19:09:14 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ void	ft_swap(t_stack *stack)
 	third = second->next;
 	last = first->prev;
 	first->next = third;
+	first->prev = second;
 	second->next = first;
 	second->prev = last;
 	third->prev = first;
-	last->prev = second;
 	last->next = second;
 	stack->stack = second;
 }

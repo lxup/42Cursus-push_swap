@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 20:32:00 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/06 21:26:44 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/07 19:15:27 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,41 +17,93 @@ void	complex_sort(t_stack *stack_a, t_stack *stack_b)
 	(void)stack_a, (void)stack_b;
 }
 
-void	three_sort(t_stack *stack)
+void	ft_find_smallest(t_clist **head, t_number *smallest)
 {
-	int		first;
-	int		second;
-	int		third;
+	t_clist		*first;
+	int			i;
 
-	first = stack->stack->number;
-	second = stack->stack->next->number;
-	third = stack->stack->prev->number;
-	if (is_in_range(third, first, second))
+	if (!*head)
+		return ;
+	first = *head;
+	smallest->value = first->number;
+	smallest->index = 0;
+	i = 0;
+	while (first->next != *head)
 	{
-		rra(stack);
-		sa(stack);
+		if (first->number < smallest->value)
+		{
+			smallest->value = first->number;
+			smallest->index = i;
+		}
+		first = first->next;
+		i++;
 	}
-	else if (is_in_range(third, second, first))
-		ra(stack);
-	else if (is_in_range(first, third, second))
-		rra(stack);
-	else if (is_in_range(first, second, third))
-		sa(stack);
-	else if (is_in_range(second, third, first))
-	{
-		sa(stack);
-		rra(stack);
-	}
+	if (first->next == *head)
+		if (first->number < smallest->value)
+		{
+			smallest->value = first->number;
+			smallest->index = i;
+		}
 }
 
+void	three_sort(t_stack *stack)
+{
+	while (!is_sorted(&stack->stack))
+	{
+		if (stack->stack->number > stack->stack->next->number)
+			sa(stack);
+		else
+			rra(stack);
+	}
+	// int		first;
+	// int		second;
+	// int		third;
+
+	// first = stack->stack->number;
+	// second = stack->stack->next->number;
+	// third = stack->stack->prev->number;
+	// if (is_in_range(first, second, third))
+	// 	sa(stack);
+	// else if (is_in_range(second, third, first))
+	// {
+	// 	sa(stack);
+	// 	rra(stack);
+	// }
+	// else if (is_in_range(third, second, first))
+	// 	ra(stack);
+	// else if (is_in_range(third, first, second))
+	// {
+	// 	sa(stack);
+	// 	ra(stack);
+	// }
+	// else if (is_in_range(first, third, second))
+	// 	rra(stack);
+}
+
+// https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a
 void	small_sort(t_stack *stack_a, t_stack *stack_b)
 {
-	// https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a
-	(void)stack_a, (void)stack_b;
-	pb(stack_a, stack_b);
-	if (stack_a->size > 4)
+	t_number	smallest;
+	int			rotate;
+	while (stack_a->size > 3)
+	{
+		ft_find_smallest(&stack_a->stack, &smallest);
+		if (smallest.index < stack_a->size / 2)
+			rotate = 1;
+		else
+			rotate = -1;
+		while (stack_a->stack->number != smallest.value)
+		{
+			if (rotate == 1)
+				ra(stack_a);
+			else
+				rra(stack_a);
+		}
 		pb(stack_a, stack_b);
-	three_sort(stack_a);	
+	}
+	three_sort(stack_a);
+	while (stack_b->size >= 1)
+		pa(stack_a, stack_b);
 }
 
 void	sorting(t_stack *stack_a, t_stack *stack_b)

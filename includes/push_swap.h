@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:21:21 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/06 21:15:02 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/07 18:57:02 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ enum	e_errors
 	MEMORY_ERR			= -1,
 	ARGS_ERR			= -2,
 };
+
+typedef struct s_number
+{
+	int	value;
+	int	index;
+}	t_number;
 
 typedef struct s_clist
 {
@@ -53,12 +59,13 @@ t_clist	*ft_clstnew(int number);
 void	sorting(t_stack *stack_a, t_stack *stack_b);
 
 // PRINT
-void	ft_print_stacks(t_clist **stack_a, t_clist **stack_b);
+void	ft_print_stacks(t_stack *stack_a, t_stack *stack_b);
 void	ft_print_clst(t_clist **head, char *name);
 
 // INIT
 void	ft_init_clst(t_stack *stack, int ac, char **av);
-void	ft_init_stacks(t_stack *stack);
+void	ft_init_stack(t_stack *stack);
+void	ft_print_allnodes(t_clist **head, char *name);
 
 // PARSING
 void	parsing(t_stack *stack_a, int ac, char **av);

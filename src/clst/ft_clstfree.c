@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_clstfree.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 19:10:04 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/06 19:10:13 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/07 18:25:35 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_clstfree(t_clist **head)
 	if (!*head)
 		return ;
 	first = *head;
-	while (first->next != *head)
+	while (first->next && first->next != *head)
 	{
 		tmp = first;
 		first = first->next;

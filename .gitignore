@@ -1,0 +1,6 @@
+*.a
+*.o
+*.out
+*.txt
+push_swap
+push_swap_tester
