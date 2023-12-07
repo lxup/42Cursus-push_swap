@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:21:21 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/07 20:46:00 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/07 21:27:43 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,10 @@ void	sorting(t_stack *stack_a, t_stack *stack_b);
 // PRINT
 void	ft_print_stacks(t_stack *stack_a, t_stack *stack_b);
 void	ft_print_clst(t_clist **head, char *name);
+void	ft_print_allnodes(t_clist **head, char *name);
 
 // INIT
-void	ft_init_clst(t_stack *stack, int ac, char **av);
 void	ft_init_stack(t_stack *stack);
-void	ft_print_allnodes(t_clist **head, char *name);
 
 // PARSING
 void	parsing(t_stack *stack_a, int ac, char **av);

@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 21:04:06 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/07 21:13:58 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/07 21:28:39 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int	main(int ac, char **av)
 	if (is_sorted(&stack_a.stack))
 		return (*(int *)ft_exit(&stack_a, &stack_b, 0, NULL));
 	sorting(&stack_a, &stack_b);
-	ft_print_stacks(&stack_a, &stack_b);
+	// ft_print_stacks(&stack_a, &stack_b);
 	return (*(int *)ft_exit(&stack_a, &stack_b, 0, NULL));
 }
