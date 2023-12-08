@@ -6,100 +6,37 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 20:32:00 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/07 20:03:45 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/08 19:18:53 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	complex_sort(t_stack *stack_a, t_stack *stack_b)
-{
-	(void)stack_a, (void)stack_b;
-	int	bit_pos;
-	int count;
-
-	bit_pos = 1;
-	while (!is_sorted(&stack_a->stack))
-	{
-		count = 0;
-		while (stack_a->stack && count++ < stack_a->size)
-		{
-			if ((stack_a->stack && bit_pos) == 0)
-			{
-				pb(stack_a, stack_b);
-			}
-			else
-				ra(stack_a);
-		}
-		while (stack_b->stack)
-		{
-			pa(stack_a, stack_b);
-		}
-		bit_pos *= 2;
-	}
-}
-
-void	ft_find_smallest(t_clist **head, t_number *smallest)
-{
-	t_clist		*first;
-	int			i;
-
-	if (!*head)
-		return ;
-	first = *head;
-	smallest->value = first->number;
-	smallest->index = 0;
-	i = 0;
-	while (first->next != *head)
-	{
-		if (first->number < smallest->value)
-		{
-			smallest->value = first->number;
-			smallest->index = i;
-		}
-		first = first->next;
-		i++;
-	}
-	if (first->next == *head)
-		if (first->number < smallest->value)
-		{
-			smallest->value = first->number;
-			smallest->index = i;
-		}
-}
-
 void	three_sort(t_stack *stack)
 {
-	while (!is_sorted(&stack->stack))
-	{
-		if (stack->stack->number > stack->stack->next->number)
-			sa(stack);
-		else
-			rra(stack);
-	}
-	// int		first;
-	// int		second;
-	// int		third;
+	int		first;
+	int		second;
+	int		third;
 
-	// first = stack->stack->number;
-	// second = stack->stack->next->number;
-	// third = stack->stack->prev->number;
-	// if (is_in_range(first, second, third))
-	// 	sa(stack);
-	// else if (is_in_range(second, third, first))
-	// {
-	// 	sa(stack);
-	// 	rra(stack);
-	// }
-	// else if (is_in_range(third, second, first))
-	// 	ra(stack);
-	// else if (is_in_range(third, first, second))
-	// {
-	// 	sa(stack);
-	// 	ra(stack);
-	// }
-	// else if (is_in_range(first, third, second))
-	// 	rra(stack);
+	first = stack->stack->number;
+	second = stack->stack->next->number;
+	third = stack->stack->prev->number;
+	if (is_in_range(first, second, third))
+		sa(stack);
+	else if (is_in_range(second, third, first))
+	{
+		sa(stack);
+		rra(stack);
+	}
+	else if (is_in_range(third, second, first))
+		ra(stack);
+	else if (is_in_range(third, first, second))
+	{
+		sa(stack);
+		ra(stack);
+	}
+	else if (is_in_range(first, third, second))
+		rra(stack);
 }
 
 // https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a

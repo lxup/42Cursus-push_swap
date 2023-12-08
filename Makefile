@@ -6,7 +6,7 @@
 #    By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 17:09:30 by lquehec           #+#    #+#              #
-#    Updated: 2023/12/07 20:46:04 by lquehec          ###   ########.fr        #
+#    Updated: 2023/12/08 19:19:16 by lquehec          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,8 @@ SRCS 		= $(addprefix $(SRCS_DIR),\
 				is.c \
 				print.c \
 				sorting.c \
+				sorting_complex.c \
+				utils.c \
 				free.c \
 				moves/ft_swap.c \
 				moves/ft_rotate.c \

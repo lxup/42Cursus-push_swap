@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:21:21 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/07 21:27:43 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/08 19:19:26 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_number
 typedef struct s_clist
 {
 	int				number;
+	int				index;
 	struct s_clist	*next;
 	struct s_clist	*prev;
 }	t_clist;
@@ -57,6 +58,11 @@ t_clist	*ft_clstnew(int number);
 
 // SORTING
 void	sorting(t_stack *stack_a, t_stack *stack_b);
+void	small_sort(t_stack *stack_a, t_stack *stack_b);
+void	three_sort(t_stack *stack);
+
+// SORTING COMPLEX
+void	complex_sort(t_stack *stack_a, t_stack *stack_b);
 
 // PRINT
 void	ft_print_stacks(t_stack *stack_a, t_stack *stack_b);
@@ -80,6 +86,9 @@ int		is_int(int num);
 int		is_whitespace(char c);
 int		is_in_range(int a, int b, int c);
 int		is_sorted(t_clist **head);
+
+// UTILS
+void	ft_find_smallest(t_clist **head, t_number *smallest);
 
 // FREE
 void	ft_free_matrix_with_indice(char **matrix, int i);
