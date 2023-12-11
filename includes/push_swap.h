@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:21:21 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/08 19:19:26 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/11 19:42:50 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	three_sort(t_stack *stack);
 
 // SORTING COMPLEX
 void	complex_sort(t_stack *stack_a, t_stack *stack_b);
+void	radix(t_stack *stack_a, t_stack *stack_b);
 
 // PRINT
 void	ft_print_stacks(t_stack *stack_a, t_stack *stack_b);

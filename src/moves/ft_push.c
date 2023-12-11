@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 17:01:21 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/07 18:54:22 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/11 21:25:17 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,35 @@
 
 void	ft_push(t_stack *stack_src, t_stack *stack_dest)
 {
-	int		number;
-	t_clist	*new;
+	t_clist	*first;
 
 	if (!stack_src->stack)
 		return ;
-	number = stack_src->stack->number;
-	new = ft_clstnew(number);
-	if (!new)
-		ft_exit(stack_src, stack_dest, MEMORY_ERR, NULL);
+	first = stack_src->stack;
 	ft_clstdelfirst(&stack_src->stack);
 	stack_src->size--;
-	ft_clstadd_front(&stack_dest->stack, new);
+	first->next = first;
+	first->prev = first;
+	ft_clstadd_front(&stack_dest->stack, first);
 	stack_dest->size++;
 }
+
+// void	ft_push(t_stack *stack_src, t_stack *stack_dest)
+// {
+// 	int		number;
+// 	t_clist	*new;
+
+// 	if (!stack_src->stack)
+// 		return ;
+// 	number = stack_src->stack->number;
+// 	new = ft_clstnew(number);
+// 	if (!new)
+// 		ft_exit(stack_src, stack_dest, MEMORY_ERR, NULL);
+// 	ft_clstdelfirst(&stack_src->stack);
+// 	stack_src->size--;
+// 	ft_clstadd_front(&stack_dest->stack, new);
+// 	stack_dest->size++;
+// }
 
 void	pa(t_stack *stack_a, t_stack *stack_b)
 {

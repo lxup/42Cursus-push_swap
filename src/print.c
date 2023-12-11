@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 20:25:10 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/07 21:12:54 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/11 21:00:01 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,15 @@ void	ft_print_clst(t_clist **head, char *name)
 	while (first->next && first->next != *head)
 	{
 		ft_putnbr_fd(first->number, 1);
-		ft_putchar_fd('\n', 1);
+		printf(" index: %d\n", first->index);
+		// ft_putchar_fd('\n', 1);
 		first = first->next;
 	}
 	if (first->next == *head)
 	{
 		ft_putnbr_fd(first->number, 1);
-		ft_putchar_fd('\n', 1);
+		printf(" index: %d\n", first->index);
+		// ft_putchar_fd('\n', 1);
 	}
 }
 

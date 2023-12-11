@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 16:34:55 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/07 18:24:58 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/11 20:38:42 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	*ft_exit(t_stack *stack_a, t_stack *stack_b, int error, char *param)
 {
+	(void)stack_a, (void)stack_b;
 	if (error < 0)
 		ft_error(error, param);
 	if (stack_a)
