@@ -6,38 +6,38 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 21:04:06 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/13 20:45:54 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/13 20:55:04 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	parse_command(t_stack *a, t_stack *b, char *command)
+static void	parse_cmd(t_stack *a, t_stack *b, char *cmd)
 {
-	if (!ft_strcmp(command, "pa\n"))
+	if (!ft_strcmp(cmd, "pa\n"))
 		pa(a, b, 0);
-	else if (!ft_strcmp(command, "pb\n"))
+	else if (!ft_strcmp(cmd, "pb\n"))
 		pb(a, b, 0);
-	else if (!ft_strcmp(command, "sa\n"))
-		sa(a, 0);
-	else if (!ft_strcmp(command, "sb\n"))
-		sb(b, 0);
-	else if (!ft_strcmp(command, "ss\n"))
-		ss(a, b, 0);
-	else if (!ft_strcmp(command, "ra\n"))
+	else if (!ft_strcmp(cmd, "ra\n"))
 		ra(a, 0);
-	else if (!ft_strcmp(command, "rb\n"))
+	else if (!ft_strcmp(cmd, "rb\n"))
 		rb(b, 0);
-	else if (!ft_strcmp(command, "rr\n"))
+	else if (!ft_strcmp(cmd, "rr\n"))
 		rr(a, b, 0);
-	else if (!ft_strcmp(command, "rra\n"))
+	else if (!ft_strcmp(cmd, "rra\n"))
 		rra(a, 0);
-	else if (!ft_strcmp(command, "rrb\n"))
+	else if (!ft_strcmp(cmd, "rrb\n"))
 		rrb(b, 0);
-	else if (!ft_strcmp(command, "rrr\n"))
+	else if (!ft_strcmp(cmd, "rrr\n"))
 		rrr(a, b, 0);
+	else if (!ft_strcmp(cmd, "sa\n"))
+		sa(a, 0);
+	else if (!ft_strcmp(cmd, "sb\n"))
+		sb(b, 0);
+	else if (!ft_strcmp(cmd, "ss\n"))
+		ss(a, b, 0);
 	else
-		ft_exit(a, b, CMD_ERR, command);
+		ft_exit(a, b, CMD_ERR, cmd);
 }
 
 int	main(int ac, char **av)
@@ -58,7 +58,7 @@ int	main(int ac, char **av)
 		line = get_next_line(STDIN_FILENO);
 		if (!line || !*line)
 			break ;
-		parse_command(&stack_a, &stack_b, line);
+		parse_cmd(&stack_a, &stack_b, line);
 		free(line);
 	}
 	if (len_bkp != stack_a.size || !is_sorted(&stack_a.stack))
