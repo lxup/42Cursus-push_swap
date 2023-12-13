@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 20:25:10 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/11 21:00:01 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/13 18:03:15 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_print_clst(t_clist **head, char *name)
 {
 	t_clist	*first;
 
-	if (!*head)
+	if (!head || !*head)
 		return ;
 	first = *head;
 	ft_putstr_fd("|========== ", 1);
@@ -25,14 +25,14 @@ void	ft_print_clst(t_clist **head, char *name)
 	while (first->next && first->next != *head)
 	{
 		ft_putnbr_fd(first->number, 1);
-		printf(" index: %d\n", first->index);
+		printf(" index: %d\n", first->current_index);
 		// ft_putchar_fd('\n', 1);
 		first = first->next;
 	}
 	if (first->next == *head)
 	{
 		ft_putnbr_fd(first->number, 1);
-		printf(" index: %d\n", first->index);
+		printf(" index: %d\n", first->current_index);
 		// ft_putchar_fd('\n', 1);
 	}
 }
@@ -40,6 +40,7 @@ void	ft_print_clst(t_clist **head, char *name)
 void	ft_print_stacks(t_stack *stack_a, t_stack *stack_b)
 {
 	ft_print_clst(&stack_a->stack, "a");
+	// ft_print_allnodes(&stack_a->stack, "a");
 	ft_putstr_fd("size: ", 1);
 	ft_putnbr_fd(stack_a->size, 1);
 	ft_putstr_fd("\n", 1);

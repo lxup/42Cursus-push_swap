@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 20:32:00 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/11 19:33:38 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/13 16:44:09 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void	small_sort(t_stack *stack_a, t_stack *stack_b)
 
 void	sorting(t_stack *stack_a, t_stack *stack_b)
 {
+	if (stack_a->size < 2)
+		ft_exit(stack_a, NULL, 0, NULL);
 	if (stack_a->size == 2)
 		sa(stack_a);
 	else if (stack_a->size == 3)

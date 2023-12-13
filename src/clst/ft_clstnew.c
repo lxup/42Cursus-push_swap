@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 21:23:10 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/08 19:14:03 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/13 18:17:48 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ t_clist	*ft_clstnew(int number)
 	if (!new_lst)
 		return (NULL);
 	new_lst->number = number;
-	new_lst->index = -1;
+	new_lst->current_index = -1;
+	new_lst->operation_cost = 0;
+	new_lst->cheapest = 0;
+	new_lst->target_node = NULL;
+	new_lst->above_median = -1;
 	new_lst->next = new_lst;
 	new_lst->prev = new_lst;
 	return (new_lst);

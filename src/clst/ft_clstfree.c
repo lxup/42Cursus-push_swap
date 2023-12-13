@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 19:10:04 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/07 21:12:42 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/13 16:27:54 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_clstfree(t_clist **head)
 	t_clist	*first;
 	t_clist	*tmp;
 
-	if (!*head)
+	if (!head || !*head)
 		return ;
 	first = *head;
 	while (first->next && first->next != *head)

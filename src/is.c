@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 19:46:43 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/07 20:28:40 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/13 16:31:39 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	is_sorted(t_clist **head)
 	t_clist	*first;
 
 	first = *head;
-	if (!*head)
+	if (!head || !*head)
 		return (0);
 	while (first->next != *head)
 	{

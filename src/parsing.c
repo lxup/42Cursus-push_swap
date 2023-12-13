@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 19:15:43 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/07 21:25:59 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/13 16:32:47 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static void	get_numbers(t_stack *stack_a, char **buffer)
 	t_clist	*new;
 
 	i = 0;
-	while (buffer[i])
+	while (buffer && buffer[i])
 	{
 		if (!check_str(buffer[i]))
 		{

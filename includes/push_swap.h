@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:21:21 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/11 19:42:50 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/13 18:17:41 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@
 # include "../libft/libft.h"
 # include <stdio.h>
 
-# define INT_MIN	-2147483648
-# define INT_MAX	2147483647
-
 # define SMALL_SORT_LIMIT	5
+
+# define INT_MIN -2147483648
+# define INT_MAX 2147483647
+# define LONG_MIN -9223372036854775808
+# define LONG_MAX 9223372036854775807
 
 enum	e_errors
 {
@@ -36,7 +38,11 @@ typedef struct s_number
 typedef struct s_clist
 {
 	int				number;
-	int				index;
+	int				current_index;
+	int				operation_cost;
+	int				cheapest;
+	int				above_median;
+	struct s_clist	*target_node;
 	struct s_clist	*next;
 	struct s_clist	*prev;
 }	t_clist;

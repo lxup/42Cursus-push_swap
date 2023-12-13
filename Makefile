@@ -6,7 +6,7 @@
 #    By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 17:09:30 by lquehec           #+#    #+#              #
-#    Updated: 2023/12/08 19:19:16 by lquehec          ###   ########.fr        #
+#    Updated: 2023/12/13 16:00:33 by lquehec          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ OBJS = $(SRCS:.c=.o)
 
 CC			= cc
 RM			= rm -f
-CFLAGS		= -Wall -Wextra -Werror
+# CFLAGS		= -Wall -Wextra -Werror
 
 # LIBFT
 LIBFT_DIR	= ./libft

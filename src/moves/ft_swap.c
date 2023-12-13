@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:24:41 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/07 19:09:14 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/13 16:37:26 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_swap(t_stack *stack)
 	t_clist	*third;
 	t_clist	*last;
 
-	if (!stack->stack)
+	if (!stack || !stack->stack)
 		return ;
 	if (stack->size == 2)
 	{
