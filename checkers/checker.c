@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 21:04:06 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/13 20:37:05 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/13 20:45:54 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ int	main(int ac, char **av)
 	if (len_bkp != stack_a.size || !is_sorted(&stack_a.stack))
 		return (ft_putstr_fd("KO\n", 2), \
 			*(int *)ft_exit(&stack_a, &stack_b, EMPTY_ERR, NULL));
-	return (ft_putstr_fd("OK\n", 2), *(int *)ft_exit(&stack_a, &stack_b, 0, NULL));
+	return (ft_putstr_fd("OK\n", 2), \
+		*(int *)ft_exit(&stack_a, &stack_b, 0, NULL));
 }
