@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:24:41 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/13 16:37:26 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/13 19:43:06 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,24 @@ void	ft_swap(t_stack *stack)
 	stack->stack = second;
 }
 
-void	sa(t_stack *stack_a)
+void	sa(t_stack *stack_a, int print)
 {
 	ft_swap(stack_a);
-	ft_putstr_fd("sa\n", 1);
+	if (print)
+		ft_putstr_fd("sa\n", 1);
 }
 
-void	sb(t_stack *stack_b)
+void	sb(t_stack *stack_b, int print)
 {
 	ft_swap(stack_b);
-	ft_putstr_fd("sb\n", 1);
+	if (print)
+		ft_putstr_fd("sb\n", 1);
 }
 
-void	ss(t_stack *stack_a, t_stack *stack_b)
+void	ss(t_stack *stack_a, t_stack *stack_b, int print)
 {
 	ft_swap(stack_a);
 	ft_swap(stack_b);
-	ft_putstr_fd("ss\n", 1);
+	if (print)
+		ft_putstr_fd("ss\n", 1);
 }

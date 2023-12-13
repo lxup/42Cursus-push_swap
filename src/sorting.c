@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 20:32:00 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/13 16:44:09 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/13 19:44:39 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,31 +22,31 @@ void	three_sort(t_stack *stack)
 	second = stack->stack->next->number;
 	third = stack->stack->prev->number;
 	if (is_in_range(first, second, third))
-		sa(stack);
+		sa(stack, 1);
 	else if (is_in_range(second, third, first))
 	{
-		sa(stack);
-		rra(stack);
+		sa(stack, 1);
+		rra(stack, 1);
 	}
 	else if (is_in_range(third, second, first))
-		ra(stack);
+		ra(stack, 1);
 	else if (is_in_range(third, first, second))
 	{
-		sa(stack);
-		ra(stack);
+		sa(stack, 1);
+		ra(stack, 1);
 	}
 	else if (is_in_range(first, third, second))
-		rra(stack);
+		rra(stack, 1);
 }
 
-void	small_sort(t_stack *stack_a, t_stack *stack_b)
+static void	small_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	t_number	smallest;
 	int			rotate;
 
 	while (stack_a->size > 3)
 	{
-		ft_find_smallest(&stack_a->stack, &smallest);
+		smallest = ft_find_smallest(stack_a);
 		if (smallest.index < stack_a->size / 2)
 			rotate = 1;
 		else
@@ -54,15 +54,15 @@ void	small_sort(t_stack *stack_a, t_stack *stack_b)
 		while (stack_a->stack->number != smallest.value)
 		{
 			if (rotate == 1)
-				ra(stack_a);
+				ra(stack_a, 1);
 			else
-				rra(stack_a);
+				rra(stack_a, 1);
 		}
-		pb(stack_a, stack_b);
+		pb(stack_a, stack_b, 1);
 	}
 	three_sort(stack_a);
 	while (stack_b->size >= 1)
-		pa(stack_a, stack_b);
+		pa(stack_a, stack_b, 1);
 }
 
 void	sorting(t_stack *stack_a, t_stack *stack_b)
@@ -70,7 +70,7 @@ void	sorting(t_stack *stack_a, t_stack *stack_b)
 	if (stack_a->size < 2)
 		ft_exit(stack_a, NULL, 0, NULL);
 	if (stack_a->size == 2)
-		sa(stack_a);
+		sa(stack_a, 1);
 	else if (stack_a->size == 3)
 		three_sort(stack_a);
 	else if (stack_a->size <= SMALL_SORT_LIMIT)

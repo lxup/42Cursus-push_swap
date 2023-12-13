@@ -6,37 +6,36 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 19:17:01 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/08 19:17:10 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/13 18:48:02 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_find_smallest(t_clist **head, t_number *smallest)
+long	ft_atol(const char *str)
 {
-	t_clist		*first;
-	int			i;
+	long	nb;
+	int		sign;
+	long	i;
 
-	if (!*head)
-		return ;
-	first = *head;
-	smallest->value = first->number;
-	smallest->index = 0;
 	i = 0;
-	while (first->next != *head)
+	while (str[i] == ' ' || str[i] == '\f' || str[i] == '\n'
+		|| str[i] == '\r' || str[i] == '\t' || str[i] == '\v')
+		i++;
+	sign = 1;
+	while (str[i] == '-' || str[i] == '+')
 	{
-		if (first->number < smallest->value)
-		{
-			smallest->value = first->number;
-			smallest->index = i;
-		}
-		first = first->next;
+		if (str[i] == '-')
+			sign *= -1;
 		i++;
 	}
-	if (first->next == *head)
-		if (first->number < smallest->value)
-		{
-			smallest->value = first->number;
-			smallest->index = i;
-		}
+	nb = 0;
+	while (ft_isdigit(str[i]))
+	{
+		nb = nb * 10 + str[i] - '0';
+		if (nb > INT_MAX || (nb * sign) < INT_MIN)
+			return (LONG_MAX);
+		i++;
+	}
+	return (nb * sign);
 }

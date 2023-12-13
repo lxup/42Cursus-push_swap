@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 18:18:26 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/07 20:52:31 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/13 20:14:22 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,17 @@
 
 void	ft_error(int error, char *param)
 {
+	if (error == EMPTY_ERR)
+		return ;
 	ft_putstr_fd("Error:\n", 2);
 	if (error == MEMORY_ERR)
 		ft_putstr_fd("DAMN, no memory left on device", 2);
 	if (error == ARGS_ERR)
 		ft_putstr_fd("Arguments-> ", 2);
+	if (error == SORT_ERR)
+		ft_putstr_fd("Something failed during sort", 2);
+	if (error == CMD_ERR)
+		ft_putstr_fd("Command not found-> ", 2);
 	if (param)
 		ft_putstr_fd(param, 2);
 	ft_putstr_fd("\n", 2);

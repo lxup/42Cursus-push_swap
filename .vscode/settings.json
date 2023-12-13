@@ -3,6 +3,8 @@
 		"libft.h": "c",
 		"push_swap.h": "c",
 		"cstdlib": "c",
-		"random": "c"
+		"random": "c",
+		"span": "c",
+		"type_traits": "c"
 	}
 }

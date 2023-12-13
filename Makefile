@@ -6,31 +6,29 @@
 #    By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 17:09:30 by lquehec           #+#    #+#              #
-#    Updated: 2023/12/13 16:00:33 by lquehec          ###   ########.fr        #
+#    Updated: 2023/12/13 20:43:06 by lquehec          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # COLORS
-END=$'\x1b[0m
-BOLD=$'\x1b[1m
-UNDER=$'\x1b[4m
-REV=$'\x1b[7m
-GREY=$'\x1b[30m
-RED=$'\x1b[31m
-GREEN=$'\x1b[32m
-YELLOW=$'\x1b[33m
-BLUE=$'\x1b[34m
-PURPLE=$'\x1b[35m
-CYAN=$'\x1b[36m
-WHITE=$'\x1b[37m
-SRC_DIR = ./srcs/
+END=$'\x1b[0m'
+BOLD=$'\x1b[1m'
+UNDER=$'\x1b[4m'
+REV=$'\x1b[7m'
+GREY=$'\x1b[30m'
+RED=$'\x1b[31m'
+GREEN=$'\x1b[32m'
+YELLOW=$'\x1b[33m'
+BLUE=$'\x1b[34m'
+PURPLE=$'\x1b[35m'
+CYAN=$'\x1b[36m'
+WHITE=$'\x1b[37m'
 
 OS 			:= $(shell uname)
 SRCS_DIR	= ./src/
 HEADER_DIR	= ./includes/
 
 SRCS 		= $(addprefix $(SRCS_DIR),\
-				main.c \
 				init.c \
 				exit.c \
 				error.c \
@@ -39,6 +37,8 @@ SRCS 		= $(addprefix $(SRCS_DIR),\
 				print.c \
 				sorting.c \
 				sorting_complex.c \
+				sorting_init.c \
+				sorting_utils.c \
 				utils.c \
 				free.c \
 				moves/ft_swap.c \
@@ -52,8 +52,11 @@ SRCS 		= $(addprefix $(SRCS_DIR),\
 				clst/ft_clstdelfirst.c \
 				clst/ft_clstfree.c \
 				clst/ft_clstfree_node.c )
+				
+OBJS 		= $(SRCS:.c=.o)
 
-OBJS = $(SRCS:.c=.o)
+MAIN_SRC	= $(addprefix $(SRCS_DIR), main.c)
+MAIN_OBJ	= $(MAIN_SRC:.c=.o)
 
 CC			= cc
 RM			= rm -f
@@ -64,29 +67,38 @@ LIBFT_DIR	= ./libft
 MAKE_LIBFT	= make -s -C $(LIBFT_DIR)
 LIBFT_PATH	= $(LIBFT_DIR)/libft.a
 
+# CHECKER
+CHECKER_DIR		= ./checkers
+CHECKER_PATH	= $(CHECKER_DIR)/checker.c
+OUTPUT_CHECKER	= $(CHECKER_DIR)/checker
+
 NAME 		= push_swap
 
 .c.o:
 			@/bin/echo -n .
 			@$(CC) $(CFLAGS) -I $(HEADER_DIR) -c $< -o $(<:.c=.o)
 
-$(NAME):	$(OBJS)
+$(NAME):	$(OBJS) $(MAIN_OBJ)
 			@$(MAKE_LIBFT) all bonus
-			@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_PATH) -o $(NAME)
+			@$(CC) $(CFLAGS) $(OBJS) $(MAIN_OBJ) $(LIBFT_PATH) -o $(NAME)
 			@echo "\n${GREEN}> push_swap was successfuly compiled 🎉${END}"
 
 all: 		$(NAME)
 
 clean:
-			@$(RM) $(OBJS)
+			@$(RM) $(OBJS) $(MAIN_OBJ)
 			@$(MAKE_LIBFT) clean
 			@echo "${YELLOW}> All objects files of so_long have been deleted ❌${END}"
 
 fclean:		clean
-			@$(RM) $(NAME)
+			@$(RM) $(NAME) $(MAIN_OBJ) $(OUTPUT_CHECKER)
 			@$(MAKE_LIBFT) fclean
 			@echo "${YELLOW}> Cleaning of so_long has been done ❌${END}"
 
 re:			fclean all
 
-.PHONY: all clean fclean re
+checker:	all
+			@$(CC) $(CFLAGS) -I $(HEADER_DIR) $(CHECKER_PATH) $(OBJS) $(LIBFT_PATH) -o $(OUTPUT_CHECKER)
+			@echo "\n${GREEN}> checker was successfuly compiled 🎉${END}"
+
+.PHONY: all clean fclean re checker

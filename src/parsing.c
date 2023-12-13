@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 19:15:43 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/13 16:32:47 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/13 18:36:48 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,30 +76,32 @@ static int	check_str(char *str)
 	return (1);
 }
 
-static void	get_numbers(t_stack *stack_a, char **buffer)
+static void	*get_numbers(t_stack *stack_a, char **buffer)
 {
 	int		i;
 	t_clist	*new;
+	long	number;
 
 	i = 0;
 	while (buffer && buffer[i])
 	{
 		if (!check_str(buffer[i]))
-		{
-			ft_free_matrix(buffer);
-			ft_exit(stack_a, NULL, ARGS_ERR, "Some character aren't allowed");
-		}
-		new = ft_clstnew(ft_atoi(buffer[i]));
+			return (ft_free_matrix(buffer), \
+				ft_exit(stack_a, NULL, ARGS_ERR, "Character not allowed."));
+		number = ft_atol(buffer[i]);
+		if (number > INT_MAX || number < INT_MIN)
+			return (ft_free_matrix(buffer), \
+				ft_exit(stack_a, NULL, ARGS_ERR, "Number out of range."));
+		new = ft_clstnew((int)number);
 		if (!new)
-		{
-			ft_free_matrix(buffer);
-			ft_exit(stack_a, NULL, MEMORY_ERR, NULL);
-		}
+			return (ft_free_matrix(buffer), \
+				ft_exit(stack_a, NULL, MEMORY_ERR, NULL));
 		ft_clstadd_back(&stack_a->stack, new);
 		stack_a->size++;
 		new = NULL;
 		i++;
 	}
+	return (NULL);
 }
 
 void	parsing(t_stack *stack_a, int ac, char **av)
