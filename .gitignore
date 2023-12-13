@@ -3,4 +3,5 @@
 *.out
 *.txt
 push_swap
+checkers/checker
 push_swap_tester
