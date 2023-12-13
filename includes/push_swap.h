@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:21:21 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/13 20:01:29 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/13 20:51:10 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
-# include <stdio.h>
+
+# define DEBUG 0
+
+# ifdef DEBUG
+#  include <stdio.h>
+# endif
 
 # define SMALL_SORT_LIMIT	5
 

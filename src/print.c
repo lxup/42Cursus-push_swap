@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 20:25:10 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/13 18:43:29 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/13 20:50:18 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_print_clst(t_clist **head, char *name)
 {
 	t_clist	*first;
 
+	if (!DEBUG)
+		return ;
 	if (!head || !*head)
 		return ;
 	first = *head;
@@ -37,6 +39,8 @@ void	ft_print_clst(t_clist **head, char *name)
 
 void	ft_print_stacks(t_stack *stack_a, t_stack *stack_b)
 {
+	if (!DEBUG)
+		return ;
 	ft_print_clst(&stack_a->stack, "a");
 	ft_putstr_fd("size: ", 1);
 	ft_putnbr_fd(stack_a->size, 1);
@@ -51,6 +55,8 @@ void	ft_print_allnodes(t_clist **head, char *name)
 {
 	t_clist	*first;
 
+	if (!DEBUG)
+		return ;
 	if (!*head)
 		return ;
 	first = *head;
