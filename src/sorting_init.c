@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:45:38 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/13 19:04:47 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/13 21:09:32 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 static void	set_target_node_sub(t_stack *stack_a, t_clist *current_b)
 {
-	long	best_match_index;
+	long	closest_index;
 	t_clist	*current_a;
 	t_clist	*target_node;
 	int		j;
 
-	best_match_index = LONG_MAX;
+	closest_index = LONG_MAX;
 	current_a = stack_a->stack;
 	j = -1;
 	while (++j < stack_a->size)
 	{
 		if (current_a->number > current_b->number \
-			&& current_a->number < best_match_index)
+			&& current_a->number < closest_index)
 		{
-			best_match_index = current_a->number;
+			closest_index = current_a->number;
 			target_node = current_a;
 		}
 		current_a = current_a->next;
 	}
-	if (LONG_MAX == best_match_index)
+	if (closest_index == LONG_MAX)
 		current_b->target_node = find_smallest_node(stack_a);
 	else
 		current_b->target_node = target_node;
