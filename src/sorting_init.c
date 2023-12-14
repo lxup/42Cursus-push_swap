@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:45:38 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/14 16:18:53 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/14 16:35:53 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,26 +76,26 @@ static void	set_cost(t_stack *a, t_stack *b)
 
 static void	set_cheapest(t_stack *stack)
 {
-	long	closest_index;
-	t_clist	*closest_node;
+	long	cheapest_operation;
+	t_clist	*cheapest_node;
 	t_clist	*current;
 	int		i;
 
 	if (stack == NULL || stack->stack == NULL)
 		return ;
-	closest_index = LONG_MAX;
+	cheapest_operation = LONG_MAX;
 	current = stack->stack;
 	i = -1;
 	while (++i < stack->size)
 	{
-		if (current->operation_cost < closest_index)
+		if (current->operation_cost < cheapest_operation)
 		{
-			closest_index = current->operation_cost;
-			closest_node = current;
+			cheapest_operation = current->operation_cost;
+			cheapest_node = current;
 		}
 		current = current->next;
 	}
-	closest_node->cheapest = 1;
+	cheapest_node->cheapest = 1;
 }
 
 void	init_sort(t_stack *a, t_stack *b)
