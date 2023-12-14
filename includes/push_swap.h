@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:21:21 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/13 20:51:10 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/14 15:38:50 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,14 @@ t_clist		*ft_clstlast(t_clist *lst);
 t_clist		*ft_clstnew(int number);
 
 // SORTING
-void		sorting(t_stack *stack_a, t_stack *stack_b);
+void		sorting(t_stack *a, t_stack *b);
 void		three_sort(t_stack *stack);
 
 // SORTING COMPLEX
-void		complex_sort(t_stack *stack_a, t_stack *stack_b);
+void		complex_sort(t_stack *a, t_stack *b);
 
 // SORTING INIT
-void		init_sort(t_stack *stack_a, t_stack *stack_b);
+void		init_sort(t_stack *a, t_stack *b);
 
 // SORTING UTILS
 t_clist		*find_smallest_node(t_stack *stack);
@@ -87,7 +87,7 @@ t_clist		*get_cheapest(t_stack *stack);
 void		set_current_index(t_stack *stack);
 
 // PRINT
-void		ft_print_stacks(t_stack *stack_a, t_stack *stack_b);
+void		ft_print_stacks(t_stack *a, t_stack *b);
 void		ft_print_clst(t_clist **head, char *name);
 void		ft_print_allnodes(t_clist **head, char *name);
 
@@ -95,11 +95,11 @@ void		ft_print_allnodes(t_clist **head, char *name);
 void		ft_init_stack(t_stack *stack);
 
 // PARSING
-void		parsing(t_stack *stack_a, int ac, char **av);
+void		parsing(t_stack *a, int ac, char **av);
 
 // EXIT
-void		*ft_exit(t_stack *stack_a, \
-					t_stack *stack_b, \
+void		*ft_exit(t_stack *a, \
+					t_stack *b, \
 					int error, \
 					char *param);
 
@@ -122,26 +122,26 @@ void		ft_free_matrix(char **matrix);
 /* ========== MOVES ==========*/
 // SWAP
 void		ft_swap(t_stack *stack);
-void		sa(t_stack *stack_a, int print);
-void		sb(t_stack *stack_b, int print);
-void		ss(t_stack *stack_a, t_stack *stack_b, int print);
+void		sa(t_stack *a, int print);
+void		sb(t_stack *b, int print);
+void		ss(t_stack *a, t_stack *b, int print);
 
 // ROTATE
 void		ft_rotate(t_stack *stack);
-void		ra(t_stack *stack_a, int print);
-void		rb(t_stack *stack_b, int print);
-void		rr(t_stack *stack_a, t_stack *stack_b, int print);
+void		ra(t_stack *a, int print);
+void		rb(t_stack *b, int print);
+void		rr(t_stack *a, t_stack *b, int print);
 
 // REVERSE ROTATE
 void		ft_rrotate(t_stack *stack);
-void		rra(t_stack *stack_a, int print);
-void		rrb(t_stack *stack_b, int print);
-void		rrr(t_stack *stack_a, t_stack *stack_b, int print);
+void		rra(t_stack *a, int print);
+void		rrb(t_stack *b, int print);
+void		rrr(t_stack *a, t_stack *b, int print);
 
 // PUSH
 void		ft_push(t_stack *stack_src, t_stack *stack_dest);
-void		pa(t_stack *stack_a, t_stack *stack_b, int print);
-void		pb(t_stack *stack_a, t_stack *stack_b, int print);
+void		pa(t_stack *a, t_stack *b, int print);
+void		pb(t_stack *a, t_stack *b, int print);
 /* ========== MOVES ==========*/
 
 #endif
