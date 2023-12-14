@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 19:15:43 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/13 18:36:48 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/14 19:01:01 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ static void	*get_numbers(t_stack *stack_a, char **buffer)
 	{
 		if (!check_str(buffer[i]))
 			return (ft_free_matrix(buffer), \
-				ft_exit(stack_a, NULL, ARGS_ERR, "Character not allowed."));
+				ft_exit(stack_a, NULL, ARGS_ERR, \
+				"Character not allowed or no numbers."));
 		number = ft_atol(buffer[i]);
 		if (number > INT_MAX || number < INT_MIN)
 			return (ft_free_matrix(buffer), \
@@ -114,7 +115,12 @@ void	parsing(t_stack *stack_a, int ac, char **av)
 	{
 		buffer = ft_split(av[i], ' ');
 		if (!buffer)
-			ft_exit(NULL, NULL, MEMORY_ERR, NULL);
+			ft_exit(stack_a, NULL, MEMORY_ERR, NULL);
+		if (!*buffer)
+		{
+			ft_free_matrix(buffer);
+			ft_exit(stack_a, NULL, ARGS_ERR, "Empty argument.");
+		}
 		get_numbers(stack_a, buffer);
 		ft_free_matrix(buffer);
 	}
