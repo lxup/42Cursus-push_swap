@@ -6,13 +6,26 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 21:04:06 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/13 20:55:04 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/17 15:49:12 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	parse_cmd(t_stack *a, t_stack *b, char *cmd)
+static void	read_to_end_file(int fd)
+{
+	char	*line;
+
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		free(line);
+	}
+}
+
+static int	parse_cmd(t_stack *a, t_stack *b, char *cmd)
 {
 	if (!ft_strcmp(cmd, "pa\n"))
 		pa(a, b, 0);
@@ -37,7 +50,15 @@ static void	parse_cmd(t_stack *a, t_stack *b, char *cmd)
 	else if (!ft_strcmp(cmd, "ss\n"))
 		ss(a, b, 0);
 	else
-		ft_exit(a, b, CMD_ERR, cmd);
+		return (0);
+	return (1);
+}
+
+static void	parse_cmd_error(t_stack *a, t_stack *b, char *cmd, int fd)
+{
+	free(cmd);
+	read_to_end_file(fd);
+	ft_exit(a, b, CMD_ERR, NULL);
 }
 
 int	main(int ac, char **av)
@@ -58,7 +79,8 @@ int	main(int ac, char **av)
 		line = get_next_line(STDIN_FILENO);
 		if (!line || !*line)
 			break ;
-		parse_cmd(&stack_a, &stack_b, line);
+		if (!parse_cmd(&stack_a, &stack_b, line))
+			parse_cmd_error(&stack_a, &stack_b, line, STDIN_FILENO);
 		free(line);
 	}
 	if (len_bkp != stack_a.size || !is_sorted(&stack_a.stack))
