@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lquehec <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:47:08 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/13 19:26:40 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/17 13:32:02 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,10 @@ void	set_current_index(t_stack *stack)
 {
 	t_clist	*head;
 	int		i;
-	int		index;
 
 	if (!stack || !stack->stack)
 		return ;
 	i = -1;
-	index = 0;
 	head = stack->stack;
 	while (++i < stack->size)
 	{

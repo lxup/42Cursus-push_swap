@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting_complex.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lquehec <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 19:19:00 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/14 16:56:35 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/17 13:35:08 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	rotate_to_target(t_stack *stack, t_clist *target, char name)
 				rb(stack, 1);
 			else
 				rrb(stack, 1);
-		}	
+		}
 	}
 }
 

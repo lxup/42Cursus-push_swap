@@ -3,26 +3,31 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+         #
+#    By: lquehec <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 17:09:30 by lquehec           #+#    #+#              #
-#    Updated: 2023/12/13 20:45:22 by lquehec          ###   ########.fr        #
+#    Updated: 2023/12/17 13:48:23 by lquehec          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# COLORS
-END=$'\x1b[0m'
-BOLD=$'\x1b[1m'
-UNDER=$'\x1b[4m'
-REV=$'\x1b[7m'
-GREY=$'\x1b[30m'
-RED=$'\x1b[31m'
-GREEN=$'\x1b[32m'
-YELLOW=$'\x1b[33m'
-BLUE=$'\x1b[34m'
-PURPLE=$'\x1b[35m'
-CYAN=$'\x1b[36m'
-WHITE=$'\x1b[37m'
+####################
+##  PRINT COLORS  ##
+####################
+
+RESET		= \033[0m
+BOLD		= \033[1m
+UNDER		= \033[4m
+REV			= \033[7m
+DEF_COLOR	= \033[0;39m
+BLACK		= \033[0;30m
+RED			= \033[0;31m
+GREEN		= \033[0;32m
+YELLOW		= \033[0;33m
+BLUE		= \033[0;34m
+MAGENTA		= \033[0;35m
+CYAN		= \033[0;36m
+GRAY		= \033[0;37m
+DELETE		= \033[2K\r
 
 OS 			:= $(shell uname)
 SRCS_DIR	= ./src/
@@ -81,24 +86,24 @@ NAME 		= push_swap
 $(NAME):	$(OBJS) $(MAIN_OBJ)
 			@$(MAKE_LIBFT) all bonus
 			@$(CC) $(CFLAGS) $(OBJS) $(MAIN_OBJ) $(LIBFT_PATH) -o $(NAME)
-			@echo "\n${GREEN}> push_swap was successfuly compiled 🎉${END}"
+			@printf "\n${BLUE}%-44s${RESET} ${GREEN}%s${RESET}\n" "Compiling project" "done"
 
 all: 		$(NAME)
 
 clean:
 			@$(RM) $(OBJS) $(MAIN_OBJ)
 			@$(MAKE_LIBFT) clean
-			@echo "${YELLOW}> All objects files of so_long have been deleted ❌${END}"
+			@printf "${BLUE}%-44s${RESET} ${GREEN}%s${RESET}\n" "Cleaning" "done"
 
 fclean:		clean
 			@$(RM) $(NAME) $(MAIN_OBJ) $(OUTPUT_CHECKER)
 			@$(MAKE_LIBFT) fclean
-			@echo "${YELLOW}> Cleaning of so_long has been done ❌${END}"
+			@printf "${BLUE}%-44s${RESET} ${GREEN}%s${RESET}\n" "File cleaning" "done"
 
 re:			fclean all
 
 checker:	all
 			@$(CC) $(CFLAGS) -I $(HEADER_DIR) $(CHECKER_PATH) $(OBJS) $(LIBFT_PATH) -o $(OUTPUT_CHECKER)
-			@echo "\n${GREEN}> checker was successfuly compiled 🎉${END}"
+			@printf "\n${BLUE}%-44s${RESET} ${GREEN}%s${RESET}\n" "Compiling checker" "done"
 
-.PHONY: all clean fclean re checker
+.PHONY: all clean fclean re checker norm
