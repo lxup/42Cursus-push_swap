@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lquehec <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 17:09:30 by lquehec           #+#    #+#              #
-#    Updated: 2023/12/17 13:48:23 by lquehec          ###   ########.fr        #
+#    Updated: 2023/12/17 16:24:53 by lquehec          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,4 +106,4 @@ checker:	all
 			@$(CC) $(CFLAGS) -I $(HEADER_DIR) $(CHECKER_PATH) $(OBJS) $(LIBFT_PATH) -o $(OUTPUT_CHECKER)
 			@printf "\n${BLUE}%-44s${RESET} ${GREEN}%s${RESET}\n" "Compiling checker" "done"
 
-.PHONY: all clean fclean re checker norm
+.PHONY: all clean fclean re checker

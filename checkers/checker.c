@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 21:04:06 by lquehec           #+#    #+#             */
-/*   Updated: 2023/12/17 15:49:12 by lquehec          ###   ########.fr       */
+/*   Updated: 2023/12/17 16:21:35 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	main(int ac, char **av)
 	char	*line;
 
 	if (ac < 2)
-		return (*(int *)ft_exit(NULL, NULL, ARGS_ERR, "Need at least 1 args"));
+		return (*(int *)ft_exit(NULL, NULL, EXIT_SUCCESS, NULL));
 	ft_init_stack(&stack_a);
 	ft_init_stack(&stack_b);
 	parsing(&stack_a, ac, av);
@@ -87,5 +87,5 @@ int	main(int ac, char **av)
 		return (ft_putstr_fd("KO\n", 2), \
 			*(int *)ft_exit(&stack_a, &stack_b, EMPTY_ERR, NULL));
 	return (ft_putstr_fd("OK\n", 2), \
-		*(int *)ft_exit(&stack_a, &stack_b, 0, NULL));
+		*(int *)ft_exit(&stack_a, &stack_b, EXIT_SUCCESS, NULL));
 }
